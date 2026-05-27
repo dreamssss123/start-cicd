@@ -1,0 +1,25 @@
+name: CI/CD Simple Pipeline
+
+# 1. กำหนดเหตุการณ์ที่ต้องการให้ตัวระบบเริ่มทำงาน
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  # 2. ขั้นตอน CI: ตรวจสอบและทดสอบโค้ด
+  continuous-integration:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Run code linting or test
+      run: echo "กำลังตรวจสอบโค้ดและรัน Unit Test..."
+
+  # 3. ขั้นตอน CD: นำโค้ดขึ้นระบบจริง (จะทำต่อเมื่อ CI ผ่านฉลุยเท่านั้น)
+  continuous-deployment:
+    runs-on: ubuntu-latest
+    needs: continuous-integration # บังคับให้ผ่าน CI ก่อนถึงจะทำขั้นตอนนี้
+    steps:
+    - name: Deploy to Server
+      run: echo "กำลังส่งโค้ดเวอร์ชันล่าสุดไปที่ Production Server..."
