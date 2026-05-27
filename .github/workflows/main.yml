@@ -22,10 +22,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    # ปรับปรุงตรงนี้: จำลองข้อความเทสแทนเพื่อไม่ให้โปรแกรมแจ้งเตือนโค้ดพัง
     - name: Run automated tests
-      run: echo "จำลองการรันระบบทดสอบเรียบร้อย"
+      run: npm run test
 
-    # ปรับปรุงตรงนี้: จำลองข้อความบิวด์แทน
     - name: Build project
-      run: echo "จำลองการบิวด์โปรเจกต์เสร็จสิ้น"
+      run: npm run build
