@@ -15,7 +15,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0",
+    "test": "jest",
     "build": "echo \"Building project...\"",
     "lint": "eslint ."
   },
