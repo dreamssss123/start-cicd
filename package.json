@@ -15,6 +15,9 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    // "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",       // หรือ mocha, vitest, lab แล้วแต่ที่คุณใช้ (ต้องรีเทิร์น code 0 ถ้าผ่าน)
+    "build": "tsc",       // คำสั่งคอมไพล์โค้ดของคุณ เช่น tsc, vite build, next build
+    "lint": "eslint ."    // (ไม่บังคับ) สคริปต์ตรวจความสะอาดของโค้ด
   }
 }
