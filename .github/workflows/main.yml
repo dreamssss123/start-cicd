@@ -11,29 +11,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. ดึงโค้ดจาก Repository ลงมาบนคอมจำลองของ GitHub
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # 2. ตั้งค่าสภาพแวดล้อม Node.js พร้อมระบบเซฟแคช (เพื่อช่วยให้รันครั้งต่อไปเร็วขึ้น)
+    # ปรับปรุงตรงนี้: เอาบรรทัด cache: 'npm' ออกเพื่อไม่ให้มันบังคับหา lock file
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-        cache: 'npm'
 
-    # 3. ติดตั้ง Dependencies ทั้งหมดอย่างแม่นยำด้วย npm ci
+    # ปรับปรุงตรงนี้: เปลี่ยนจาก npm ci เป็น npm install ให้ระบบสร้างโฟลเดอร์อัตโนมัติ
     - name: Install dependencies
       run: npm install
 
-    # 4. [ขั้นตอนเพิ่ม] รันคำสั่งตรวจคุณภาพโค้ด (เปิดใช้งานได้โดยการลบเครื่องหมาย # ด้านหน้าออก)
-    # - name: Run code linter
-    #   run: npm run lint
-
-    # 5. รันระบบทดสอบอัตโนมัติ (หาก Test พัง ระบบจะหยุดทำงานทันที)
     - name: Run automated tests
       run: npm run test
 
-    # 6. ทำการสร้างและคอมไพล์โปรเจกต์ (Build)
     - name: Build project
       run: npm run build
